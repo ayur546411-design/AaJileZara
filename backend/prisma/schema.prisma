@@ -1,0 +1,217 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String            @id @default(uuid())
+  clerkId           String?           @unique
+  email             String            @unique
+  name              String
+  phone             String?
+  role              String            @default("CLIENT") // CLIENT, ADVISOR, ADMIN
+  clientCategory    String            @default("OTHER") // STUDENT, HOMEMAKER, PROFESSIONAL, OTHER
+  isVerifiedStudent Boolean           @default(false)
+  studentDocUrl     String?
+  avatarUrl         String?
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  
+  advisorProfile    Advisor?
+  clientBookings    Booking[]         @relation("ClientBookings")
+  advisoryRequests  AdvisoryRequest[] @relation("ClientRequests")
+  payments          Payment[]
+}
+
+model Advisor {
+  id                String            @id @default(uuid())
+  userId            String            @unique
+  user              User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title             String            // e.g. "Senior Guidance Counselor", "Family & Transitions Specialist"
+  bio               String
+  specializations   String            // Stored as JSON array string
+  languages         String            // Stored as JSON array string
+  maxWeeklyHours    Int               @default(20)
+  active            Boolean           @default(true)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+
+  assignedBookings  Booking[]         @relation("AdvisorBookings")
+  assignedRequests  AdvisoryRequest[] @relation("AdvisorRequests")
+}
+
+model ServiceCategory {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  description String
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  icon        String   @default("Compass")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  bookings    Booking[]
+  requests    AdvisoryRequest[]
+}
+
+model Package {
+  id                 String   @id @default(uuid())
+  name               String
+  slug               String   @unique
+  planType           String   @default("DIRECT_GUIDANCE") // DIRECT_GUIDANCE, ADVISORY_SUPPORT
+  description        String
+  basePrice          Float    @default(1500)
+  studentPrice       Float    @default(500)
+  homemakerPrice     Float    @default(1000)
+  professionalPrice  Float    @default(2000)
+  durationMinutes    Int      @default(60)
+  sessionsCount      Int      @default(1)
+  validityDays       Int      @default(30)
+  isActive           Boolean  @default(true)
+  isApproved         Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  bookings           Booking[]
+}
+
+model Booking {
+  id             String           @id @default(uuid())
+  bookingRef     String           @unique
+  sessionUid     String           @unique @default(uuid())
+  clientId       String
+  client         User             @relation("ClientBookings", fields: [clientId], references: [id])
+  advisorId      String?
+  advisor        Advisor?         @relation("AdvisorBookings", fields: [advisorId], references: [id])
+  packageId      String?
+  package        Package?         @relation(fields: [packageId], references: [id])
+  categoryId     String?
+  category       ServiceCategory? @relation(fields: [categoryId], references: [id])
+  
+  sessionType    String           @default("LIVE_VIDEO") // LIVE_VIDEO, PHONE_CALL
+  scheduledAt    DateTime
+  endAt          DateTime
+  status         String           @default("CONFIRMED") // SCHEDULED, CONFIRMED, COMPLETED, CANCELLED, NO_SHOW
+  bufferMinutes  Int              @default(15)
+  intakeAnswers  String?          // JSON string
+  timezone       String           @default("Asia/Kolkata")
+  notes          String?
+  clientPhone    String?
+  clientEmail    String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  liveRoom       LiveSessionRoom?
+  payments       Payment[]
+}
+
+model AdvisoryRequest {
+  id                   String           @id @default(uuid())
+  requestRef           String           @unique
+  clientId             String
+  client               User             @relation("ClientRequests", fields: [clientId], references: [id])
+  assignedAdvisorId    String?
+  assignedAdvisor      Advisor?         @relation("AdvisorRequests", fields: [assignedAdvisorId], references: [id])
+  categoryId           String?
+  category             ServiceCategory? @relation(fields: [categoryId], references: [id])
+  
+  concernSummary       String
+  preferredLanguage    String           @default("Hindi")
+  preferredContact     String           @default("Phone")
+  status               String           @default("NEW") // NEW, REVIEWED, ASSIGNED, INTRO_SCHEDULED, RECOMMENDED, CLOSED
+  internalNotes        String?          // Internal only - not visible to client
+  clientRecommendations String?         // Visible to client
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+}
+
+model LiveSessionRoom {
+  id                   String            @id @default(uuid())
+  bookingId            String            @unique
+  booking              Booking           @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  roomName             String
+  roomUrl              String
+  dailyRoomId          String?
+  sessionCardUid       String            @unique
+  tokenExpiresAt       DateTime
+  recordingConsentGiven Boolean          @default(false)
+  recordingStatus      String            @default("DISABLED") // DISABLED, ACTIVE, STOPPED
+  createdAt            DateTime          @default(now())
+  
+  recordings           SessionRecording[]
+}
+
+model SessionRecording {
+  id                   String          @id @default(uuid())
+  liveSessionId        String
+  liveSession          LiveSessionRoom @relation(fields: [liveSessionId], references: [id], onDelete: Cascade)
+  blobStorageUrl       String
+  blobName             String
+  durationSeconds      Int             @default(0)
+  retentionExpiresAt   DateTime
+  consentAudit         String          // JSON: timestamp, consentGrantedByClient, consentGrantedByAdvisor
+  status               String          @default("RECORDED") // RECORDED, ARCHIVED, DELETED
+  deletedAt            DateTime?
+  accessLogs           String?         // JSON array of admin access events
+  createdAt            DateTime        @default(now())
+}
+
+model Payment {
+  id             String    @id @default(uuid())
+  bookingId      String?
+  booking        Booking?  @relation(fields: [bookingId], references: [id])
+  clientId       String
+  client         User      @relation(fields: [clientId], references: [id])
+  amount         Float
+  currency       String    @default("INR")
+  status         String    @default("COMPLETED") // PENDING, COMPLETED, FAILED, REFUNDED
+  transactionRef String    @unique
+  gateway        String    @default("RAZORPAY_AZURE")
+  verifiedAt     DateTime?
+  createdAt      DateTime  @default(now())
+}
+
+model IntakeFormConfig {
+  id            String   @id @default(uuid())
+  categoryId    String?
+  fieldsConfig  String   // JSON string of fields
+  wordLimits    String   // JSON string of word limit rules
+  version       Int      @default(1)
+  isActive      Boolean  @default(true)
+  updatedAt     DateTime @updatedAt
+}
+
+model CostEntry {
+  id                  String   @id @default(uuid())
+  category            String   // DOMAIN, APP_SERVICE, DATABASE, BLOB_STORAGE, VIDEO_SESSIONS, RECORDINGS, BANDWIDTH, NOTIFICATIONS, MONITORING
+  serviceName         String
+  estimatedMonthlyInr Float
+  actualBilledInr     Float?
+  usageQuantity       String
+  monthYear           String   // e.g. "2026-10"
+  notes               String?
+  budgetLimitInr      Float    @default(5000)
+  isActualInvoice     Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model AuditLog {
+  id          String   @id @default(uuid())
+  actorId     String?
+  actorRole   String?
+  action      String   // e.g. "SESSION_ACCESSED", "RECORDING_DELETED", "PRICE_UPDATED"
+  entityType  String
+  entityId    String?
+  details     String?  // JSON string
+  ipAddress   String?
+  createdAt   DateTime @default(now())
+}
