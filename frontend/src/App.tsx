@@ -32,7 +32,7 @@ export const App: React.FC = () => {
     <AuthProvider>
       <Router>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen bg-brand-cream text-brand-charcoal selection:bg-brand-blush selection:text-brand-wine">
+        <div className="flex flex-col min-h-screen bg-white text-text-main selection:bg-dhani-soft selection:text-navy">
           <Navbar />
           
           <main className="flex-grow">

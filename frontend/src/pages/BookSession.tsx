@@ -169,7 +169,7 @@ export const BookSession: React.FC = () => {
           particleCount: 80,
           spread: 70,
           origin: { y: 0.6 },
-          colors: ['#790C35', '#B08032', '#F9E9E7'],
+          colors: ['#14213D', '#B5D56A', '#2C4A8A', '#EEF5D8'],
         });
       } else {
         setErrorMessage(res.message || 'Failed to complete booking. Please try another slot.');
@@ -315,7 +315,7 @@ export const BookSession: React.FC = () => {
                     {confirmedCard.sessionType === 'LIVE_VIDEO' ? (
                       <button
                         onClick={() => navigate(`/session/${confirmedCard.sessionUid}`)}
-                        className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-bold bg-brand-cream text-brand-wine hover:bg-white transition-all shadow-sm flex items-center justify-center gap-2"
+                        className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] transition-all shadow-md flex items-center justify-center gap-2"
                       >
                         <Video className="w-4 h-4" />
                         Join Live Video Session Room
@@ -323,7 +323,7 @@ export const BookSession: React.FC = () => {
                     ) : (
                       <a
                         href={confirmedCard.roomUrl}
-                        className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-bold bg-brand-cream text-brand-wine hover:bg-white transition-all shadow-sm flex items-center justify-center gap-2"
+                        className="w-full sm:w-auto px-6 py-2.5 rounded-full text-xs font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] transition-all shadow-md flex items-center justify-center gap-2"
                       >
                         <PhoneCall className="w-4 h-4" />
                         Click to Connect Call
@@ -488,7 +488,7 @@ export const BookSession: React.FC = () => {
                       setErrorMessage(null);
                       setCurrentStep(2);
                     }}
-                    className="px-6 py-2.5 rounded-full text-xs font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-all flex items-center gap-2"
+                    className="px-6 py-2.5 rounded-full text-xs font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] hover:-translate-y-0.5 transition-all flex items-center gap-2 shadow-md"
                   >
                     <span>Continue to Advisor & Calendar</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -638,8 +638,8 @@ export const BookSession: React.FC = () => {
                                 !slot.isAvailable
                                   ? 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through'
                                   : isSelected
-                                  ? 'bg-brand-wine text-white border-brand-wine shadow-sm font-semibold'
-                                  : 'bg-white hover:bg-brand-blush/40 text-brand-charcoal border-gray-200'
+                                  ? 'bg-[#14213D] text-[#B5D56A] border-[#14213D] shadow-sm font-bold'
+                                  : 'bg-white hover:bg-[#EEF5D8] text-[#14213D] border-[#E3E8F2]'
                               }`}
                             >
                               <div className="flex items-center justify-center gap-1">
@@ -676,7 +676,7 @@ export const BookSession: React.FC = () => {
                       setErrorMessage(null);
                       setCurrentStep(3);
                     }}
-                    className="px-6 py-2.5 rounded-full text-xs font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-all flex items-center gap-2"
+                    className="px-6 py-2.5 rounded-full text-xs font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] hover:-translate-y-0.5 transition-all flex items-center gap-2 shadow-md"
                   >
                     <span>Proceed to Intake Details</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -835,9 +835,9 @@ export const BookSession: React.FC = () => {
                     type="button"
                     disabled={isSubmitting || wordCount > maxWords || !clientName || !clientEmail}
                     onClick={handleBookingSubmit}
-                    className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-soft"
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-full text-xs font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] hover:-translate-y-0.5 transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-md"
                   >
-                    <CheckCircle className="w-4 h-4 text-brand-gold-light" />
+                    <CheckCircle className="w-4 h-4 text-[#14213D]" />
                     {isSubmitting ? 'Securing Booking...' : `Confirm Booking & Issue Live Card`}
                   </button>
                 </div>

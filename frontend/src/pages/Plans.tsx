@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { api } from '../services/api';
 import { 
   Check, 
-  HelpCircle, 
   ArrowRight, 
   Calendar, 
   MessageSquare, 
@@ -115,31 +114,31 @@ export const Plans: React.FC = () => {
   return (
     <div className="space-y-20 pb-20">
       {/* Hero Header */}
-      <section className="bg-brand-blush/30 py-16 border-b border-brand-wine/10 text-center">
+      <section className="bg-[#EEF5D8]/40 py-16 border-b border-[#E3E8F2] text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full gold-badge text-xs uppercase tracking-wider font-semibold">
-            <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#B5D56A] text-xs uppercase tracking-wider font-semibold text-[#14213D] shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#6E8F1F]" />
             <span>Honest, Transparent Guidance</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl text-brand-wine font-bold leading-tight">
+          <h1 className="font-heading text-4xl sm:text-5xl text-[#14213D] font-bold leading-tight">
             Coaching & Guidance Plans
           </h1>
-          <p className="text-base sm:text-lg text-brand-charcoal/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#5B6784] max-w-2xl mx-auto leading-relaxed">
             Every human journey is unique. We provide two structured guidance paths with category-based fair pricing for students, homemakers, and professionals.
           </p>
 
           {/* Interactive User Category Switcher */}
           <div className="pt-6">
-            <p className="text-xs uppercase tracking-wider text-brand-charcoal/60 font-semibold mb-3">
+            <p className="text-xs uppercase tracking-wider text-[#5B6784] font-semibold mb-3">
               Select Your Category to View Tailored Starting Prices:
             </p>
-            <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-white border border-brand-wine/20 shadow-sm">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl bg-white border border-[#E3E8F2] shadow-sm">
               <button
                 onClick={() => setSelectedUserCategory('STUDENT')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
                   selectedUserCategory === 'STUDENT'
-                    ? 'bg-brand-wine text-white shadow-sm'
-                    : 'text-brand-charcoal hover:bg-brand-blush/40'
+                    ? 'bg-[#14213D] text-[#B5D56A] shadow-xs'
+                    : 'text-[#5B6784] hover:bg-[#EEF5D8]'
                 }`}
               >
                 <GraduationCap className="w-4 h-4" />
@@ -148,10 +147,10 @@ export const Plans: React.FC = () => {
 
               <button
                 onClick={() => setSelectedUserCategory('HOMEMAKER')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
                   selectedUserCategory === 'HOMEMAKER'
-                    ? 'bg-brand-wine text-white shadow-sm'
-                    : 'text-brand-charcoal hover:bg-brand-blush/40'
+                    ? 'bg-[#14213D] text-[#B5D56A] shadow-xs'
+                    : 'text-[#5B6784] hover:bg-[#EEF5D8]'
                 }`}
               >
                 <HomeIcon className="w-4 h-4" />
@@ -160,10 +159,10 @@ export const Plans: React.FC = () => {
 
               <button
                 onClick={() => setSelectedUserCategory('PROFESSIONAL')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
                   selectedUserCategory === 'PROFESSIONAL'
-                    ? 'bg-brand-wine text-white shadow-sm'
-                    : 'text-brand-charcoal hover:bg-brand-blush/40'
+                    ? 'bg-[#14213D] text-[#B5D56A] shadow-xs'
+                    : 'text-[#5B6784] hover:bg-[#EEF5D8]'
                 }`}
               >
                 <Briefcase className="w-4 h-4" />
@@ -172,18 +171,18 @@ export const Plans: React.FC = () => {
 
               <button
                 onClick={() => setSelectedUserCategory('OTHER')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 ${
                   selectedUserCategory === 'OTHER'
-                    ? 'bg-brand-wine text-white shadow-sm'
-                    : 'text-brand-charcoal hover:bg-brand-blush/40'
+                    ? 'bg-[#14213D] text-[#B5D56A] shadow-xs'
+                    : 'text-[#5B6784] hover:bg-[#EEF5D8]'
                 }`}
               >
                 <User className="w-4 h-4" />
                 <span>Other Individual</span>
               </button>
             </div>
-            <p className="text-xs text-brand-gold-muted mt-2 italic">
-              Currently viewing proposed rates for: <strong>{activePricing.label}</strong> ({activePricing.badge})
+            <p className="text-xs text-[#5B6784] mt-2 italic">
+              Currently viewing proposed rates for: <strong className="text-[#14213D]">{activePricing.label}</strong> ({activePricing.badge})
             </p>
           </div>
         </div>
@@ -194,57 +193,57 @@ export const Plans: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           
           {/* Plan A: Direct Guidance */}
-          <div className="editorial-card rounded-3xl p-8 bg-white border-2 border-brand-wine/15 flex flex-col justify-between text-left relative">
+          <div className="rounded-3xl p-8 bg-white border border-[#E3E8F2] hover:border-[#B5D56A] shadow-soft hover:shadow-card transition-all duration-200 flex flex-col justify-between text-left relative">
             <div className="space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-brand-wine/10">
+              <div className="flex items-center justify-between pb-4 border-b border-[#E3E8F2]">
                 <div>
-                  <span className="px-3 py-1 rounded-full bg-brand-blush text-brand-wine text-xs font-bold uppercase tracking-wider">
+                  <span className="px-3 py-1 rounded-full bg-[#EEF5D8] text-[#14213D] border border-[#B5D56A]/40 text-xs font-bold uppercase tracking-wider">
                     Plan A
                   </span>
-                  <h2 className="font-serif text-2xl font-bold text-brand-charcoal mt-2">
+                  <h2 className="font-heading text-2xl font-bold text-[#14213D] mt-2">
                     Direct Guidance
                   </h2>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs text-gray-500 block">Proposed Price</span>
-                  <span className="font-serif text-3xl font-bold text-brand-wine">
+                  <span className="text-xs text-[#5B6784] block">Proposed Price</span>
+                  <span className="font-heading text-3xl font-bold text-[#14213D]">
                     {activePricing.planAPrice}
                   </span>
-                  <span className="text-[11px] text-gray-400 block">/ 60-min session</span>
+                  <span className="text-[11px] text-[#5B6784] block">/ 60-min session</span>
                 </div>
               </div>
 
-              <p className="text-sm text-brand-charcoal/75 leading-relaxed">
+              <p className="text-sm text-[#5B6784] leading-relaxed">
                 For individuals who know what they are seeking and prefer to select an available counselor directly, schedule their calendar slot, and begin immediately.
               </p>
 
               <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-wine">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#14213D]">
                   What is Included:
                 </h4>
-                <ul className="space-y-2.5 text-xs text-brand-charcoal/80">
+                <ul className="space-y-2.5 text-xs text-[#5B6784]">
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Select from the 7 Stages of Life directly.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Choose an available coach or mentor from our directory.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Choose between Private Phone Call or Secure Live Video Session.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Complete a brief intake form with character/word counting.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Instant Digital Live Session ID Card with join link & details.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Buffer time between sessions preventing rushed conversations.</span>
                   </li>
                 </ul>
@@ -254,66 +253,66 @@ export const Plans: React.FC = () => {
             <div className="pt-8 mt-6">
               <Link
                 to={`/book?plan=direct&category=${selectedUserCategory}`}
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-sm font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-all shadow-soft"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-sm font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] hover:-translate-y-0.5 transition-all shadow-md"
               >
-                <Calendar className="w-4 h-4 text-brand-gold-light" />
+                <Calendar className="w-4 h-4 text-[#14213D]" />
                 Book Direct Guidance ({activePricing.planAPrice})
               </Link>
             </div>
           </div>
 
           {/* Plan B: Advisory Team Support */}
-          <div className="editorial-card rounded-3xl p-8 bg-white border-2 border-brand-gold/50 shadow-gold flex flex-col justify-between text-left relative">
+          <div className="rounded-3xl p-8 bg-white border-2 border-[#B5D56A] shadow-dhani flex flex-col justify-between text-left relative">
             <div className="space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-brand-gold/20">
+              <div className="flex items-center justify-between pb-4 border-b border-[#E3E8F2]">
                 <div>
-                  <span className="px-3 py-1 rounded-full gold-badge text-brand-gold-muted text-xs font-bold uppercase tracking-wider">
+                  <span className="px-3 py-1 rounded-full bg-[#14213D] text-[#B5D56A] text-xs font-bold uppercase tracking-wider shadow-xs">
                     Plan B · Recommended
                   </span>
-                  <h2 className="font-serif text-2xl font-bold text-brand-charcoal mt-2">
+                  <h2 className="font-heading text-2xl font-bold text-[#14213D] mt-2">
                     Advisory Team Support
                   </h2>
                 </div>
                 <div className="text-right">
-                  <span className="text-xs text-brand-gold block">Proposed Price</span>
-                  <span className="font-serif text-3xl font-bold text-brand-wine">
+                  <span className="text-xs text-[#6E8F1F] font-semibold block">Proposed Price</span>
+                  <span className="font-heading text-3xl font-bold text-[#14213D]">
                     {activePricing.planBPrice}
                   </span>
-                  <span className="text-[11px] text-gray-400 block">/ 2-session guided path</span>
+                  <span className="text-[11px] text-[#5B6784] block">/ 2-session guided path</span>
                 </div>
               </div>
 
-              <p className="text-sm text-brand-charcoal/75 leading-relaxed">
+              <p className="text-sm text-[#5B6784] leading-relaxed">
                 For individuals navigating layered relationship or family complexities who need guidance identifying the root cause, selecting the right mentor, and planning follow-up steps.
               </p>
 
               <div className="space-y-3 pt-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-brand-gold">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-[#14213D]">
                   What is Included:
                 </h4>
-                <ul className="space-y-2.5 text-xs text-brand-charcoal/80">
+                <ul className="space-y-2.5 text-xs text-[#5B6784]">
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Submit confidential request with your concern summary.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Authorized senior team member reviews circumstances in 24h.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Direct match with the advisor possessing highest domain synergy.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Introductory exploratory conversation + actionable roadmap.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Backend follow-up coordination & progress check-in.</span>
                   </li>
                   <li className="flex items-start gap-2.5">
-                    <Check className="w-4 h-4 text-brand-gold shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#6E8F1F] shrink-0 mt-0.5" />
                     <span>Full request status tracking in your client dashboard.</span>
                   </li>
                 </ul>
@@ -323,9 +322,9 @@ export const Plans: React.FC = () => {
             <div className="pt-8 mt-6">
               <a
                 href="#request-form"
-                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-sm font-semibold bg-brand-charcoal text-white hover:bg-brand-wine transition-all shadow-soft"
+                className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-full text-sm font-bold bg-[#14213D] text-white hover:bg-[#2C4A8A] hover:-translate-y-0.5 transition-all shadow-md"
               >
-                <MessageSquare className="w-4 h-4 text-brand-gold-light" />
+                <MessageSquare className="w-4 h-4 text-[#B5D56A]" />
                 Submit Plan B Request ({activePricing.planBPrice})
               </a>
             </div>
@@ -334,9 +333,9 @@ export const Plans: React.FC = () => {
         </div>
 
         {/* Category Pricing Transparency Note */}
-        <div className="max-w-4xl mx-auto mt-12 p-6 rounded-2xl bg-brand-blush/40 border border-brand-wine/15 text-left text-xs leading-relaxed text-brand-charcoal/80">
-          <p className="font-semibold text-brand-wine mb-1 flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-brand-gold" />
+        <div className="max-w-4xl mx-auto mt-12 p-6 rounded-2xl bg-[#EEF5D8]/40 border border-[#B5D56A]/30 text-left text-xs leading-relaxed text-[#5B6784]">
+          <p className="font-semibold text-[#14213D] mb-1 flex items-center gap-1.5">
+            <ShieldCheck className="w-4 h-4 text-[#6E8F1F]" />
             Transparent Category-Based Pricing Policy
           </p>
           <p>
@@ -348,13 +347,13 @@ export const Plans: React.FC = () => {
       {/* Comprehensive Coaching Packages & Journeys */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <span className="px-3 py-1 rounded-full gold-badge text-brand-gold text-xs font-bold uppercase tracking-wider">
+          <span className="px-3 py-1 rounded-full bg-[#EEF5D8] text-[#14213D] border border-[#B5D56A]/40 text-xs font-bold uppercase tracking-wider">
             Curated Mentorship Packages
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-brand-wine font-bold">
+          <h2 className="font-heading text-3xl sm:text-4xl text-[#14213D] font-bold">
             All Journey & Session Options
           </h2>
-          <p className="text-xs sm:text-sm text-brand-charcoal/70">
+          <p className="text-xs sm:text-sm text-[#5B6784]">
             Choose a single deep-dive clarity session or commit to a multi-week transformational journey.
           </p>
         </div>
@@ -418,38 +417,40 @@ export const Plans: React.FC = () => {
           ].map((pkg, idx) => (
             <div
               key={idx}
-              className={`editorial-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all hover:shadow-elevated ${
-                pkg.highlight ? 'bg-white border-2 border-brand-wine shadow-soft ring-1 ring-brand-wine/10' : 'bg-white border border-brand-wine/10'
+              className={`rounded-3xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-200 ${
+                pkg.highlight 
+                  ? 'bg-white border-2 border-[#B5D56A] shadow-dhani ring-1 ring-[#B5D56A]/20' 
+                  : 'bg-white border border-[#E3E8F2] hover:border-[#B5D56A] shadow-soft hover:shadow-card'
               }`}
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                    pkg.highlight ? 'bg-brand-wine text-white' : 'bg-brand-blush text-brand-wine'
+                    pkg.highlight ? 'bg-[#14213D] text-[#B5D56A]' : 'bg-[#EEF5D8] text-[#14213D]'
                   }`}>
                     {pkg.tag}
                   </span>
-                  <span className="text-xs text-brand-charcoal/60 font-medium">
+                  <span className="text-xs text-[#5B6784] font-medium">
                     {pkg.duration}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-brand-charcoal">{pkg.name}</h3>
+                  <h3 className="font-heading text-xl font-bold text-[#14213D]">{pkg.name}</h3>
                   <div className="mt-2 flex items-baseline gap-1">
-                    <span className="font-serif text-3xl font-bold text-brand-wine">{pkg.price}</span>
-                    {pkg.price !== 'FREE' && <span className="text-xs text-gray-500">total</span>}
+                    <span className="font-heading text-3xl font-bold text-[#14213D]">{pkg.price}</span>
+                    {pkg.price !== 'FREE' && <span className="text-xs text-[#5B6784]">total</span>}
                   </div>
                 </div>
 
-                <p className="text-xs text-brand-charcoal/70 leading-relaxed">
+                <p className="text-xs text-[#5B6784] leading-relaxed">
                   {pkg.desc}
                 </p>
 
-                <ul className="space-y-2 pt-2 border-t border-brand-wine/10 text-xs text-brand-charcoal/80">
+                <ul className="space-y-2 pt-2 border-t border-[#E3E8F2] text-xs text-[#5B6784]">
                   {pkg.features.map((feat, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-2">
-                      <Check className="w-3.5 h-3.5 text-brand-gold shrink-0 mt-0.5" />
+                      <Check className="w-3.5 h-3.5 text-[#6E8F1F] shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -459,10 +460,10 @@ export const Plans: React.FC = () => {
               <div className="pt-6 mt-6">
                 <Link
                   to="/book"
-                  className={`w-full inline-flex items-center justify-center gap-2 py-3 rounded-full text-xs font-semibold transition-all ${
+                  className={`w-full inline-flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold transition-all ${
                     pkg.highlight
-                      ? 'bg-brand-wine text-white hover:bg-brand-wine-dark shadow-sm'
-                      : 'bg-brand-blush/60 text-brand-wine hover:bg-brand-wine hover:text-white'
+                      ? 'bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] hover:-translate-y-0.5 shadow-sm'
+                      : 'border-1.5 border-[#14213D] text-[#14213D] hover:bg-[#14213D] hover:text-white'
                   }`}
                 >
                   <span>Select {pkg.name}</span>
@@ -476,21 +477,21 @@ export const Plans: React.FC = () => {
 
       {/* Embedded Plan B Request Submission Form */}
       <section id="request-form" className="max-w-4xl mx-auto px-4 sm:px-6 scroll-mt-28">
-        <div className="editorial-card rounded-3xl p-6 sm:p-10 bg-white border border-brand-wine/20 shadow-elevated text-left">
+        <div className="rounded-3xl p-6 sm:p-10 bg-white border border-[#E3E8F2] shadow-soft text-left">
           <div className="text-center max-w-xl mx-auto mb-8 space-y-2">
-            <span className="px-3 py-1 rounded-full gold-badge text-brand-gold-muted text-xs font-bold uppercase tracking-wider">
+            <span className="px-3 py-1 rounded-full bg-[#EEF5D8] text-[#14213D] border border-[#B5D56A]/40 text-xs font-bold uppercase tracking-wider">
               Advisory Intake Desk
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-brand-wine font-bold">
+            <h3 className="font-heading text-2xl sm:text-3xl text-[#14213D] font-bold">
               Submit a Request for Advisory Team Support
             </h3>
-            <p className="text-xs text-brand-charcoal/70">
+            <p className="text-xs text-[#5B6784]">
               Tell us a little about your personal or relational circumstance. An authorized team member will review your details with complete discretion.
             </p>
           </div>
 
           {submitSuccess && (
-            <div className="mb-6 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800">
+            <div className="mb-6 p-4 rounded-xl bg-[#EEF5D8] border border-[#B5D56A] text-xs text-[#14213D]">
               <p className="font-bold">✓ Request Successfully Received!</p>
               <p className="mt-1">{submitSuccess}</p>
               <p className="mt-2 font-medium">You can track this request anytime in your Client Portal.</p>
@@ -507,7 +508,7 @@ export const Plans: React.FC = () => {
           <form onSubmit={handlePlanBSubmit} className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-brand-charcoal mb-1">
+                <label className="block text-xs font-semibold text-[#14213D] mb-1">
                   Full Name *
                 </label>
                 <input
@@ -516,12 +517,12 @@ export const Plans: React.FC = () => {
                   value={formData.clientName}
                   onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
                   placeholder="e.g. Meera Sharma"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-brand-wine focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E3E8F2] text-xs text-[#14213D] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 focus:outline-none bg-white transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-brand-charcoal mb-1">
+                <label className="block text-xs font-semibold text-[#14213D] mb-1">
                   Email Address *
                 </label>
                 <input
@@ -530,14 +531,14 @@ export const Plans: React.FC = () => {
                   value={formData.clientEmail}
                   onChange={(e) => setFormData({ ...formData, clientEmail: e.target.value })}
                   placeholder="name@example.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-brand-wine focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E3E8F2] text-xs text-[#14213D] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 focus:outline-none bg-white transition-all"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-brand-charcoal mb-1">
+                <label className="block text-xs font-semibold text-[#14213D] mb-1">
                   WhatsApp / Phone Number
                 </label>
                 <input
@@ -545,18 +546,18 @@ export const Plans: React.FC = () => {
                   value={formData.clientPhone}
                   onChange={(e) => setFormData({ ...formData, clientPhone: e.target.value })}
                   placeholder="+91 98XXX XXXXX"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-brand-wine focus:outline-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E3E8F2] text-xs text-[#14213D] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 focus:outline-none bg-white transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-brand-charcoal mb-1">
+                <label className="block text-xs font-semibold text-[#14213D] mb-1">
                   Preferred Language
                 </label>
                 <select
                   value={formData.preferredLanguage}
                   onChange={(e) => setFormData({ ...formData, preferredLanguage: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-brand-wine focus:outline-none bg-white"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E3E8F2] text-xs text-[#14213D] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 focus:outline-none bg-white transition-all"
                 >
                   <option value="Hindi">Hindi</option>
                   <option value="English">English</option>
@@ -567,13 +568,13 @@ export const Plans: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-brand-charcoal mb-1">
+                <label className="block text-xs font-semibold text-[#14213D] mb-1">
                   Preferred Contact
                 </label>
                 <select
                   value={formData.preferredContact}
                   onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value })}
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-brand-wine focus:outline-none bg-white"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-[#E3E8F2] text-xs text-[#14213D] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 focus:outline-none bg-white transition-all"
                 >
                   <option value="Phone">Telephone Call</option>
                   <option value="Live Video">Live Video Consultation</option>
@@ -584,10 +585,10 @@ export const Plans: React.FC = () => {
             {/* Free-text concern with live word counter */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="block text-xs font-semibold text-brand-charcoal">
+                <label className="block text-xs font-semibold text-[#14213D]">
                   Describe what you are navigating (up to 250 words) *
                 </label>
-                <span className={`text-[11px] font-mono ${wordCount > maxWords ? 'text-rose-600 font-bold' : 'text-gray-400'}`}>
+                <span className={`text-[11px] font-mono ${wordCount > maxWords ? 'text-rose-600 font-bold' : 'text-[#5B6784]'}`}>
                   {wordCount} / {maxWords} words
                 </span>
               </div>
@@ -597,10 +598,10 @@ export const Plans: React.FC = () => {
                 value={formData.concernSummary}
                 onChange={(e) => setFormData({ ...formData, concernSummary: e.target.value })}
                 placeholder="Share a brief overview of your current family tension, personal dilemma, or emotional state so our senior intake team can evaluate the best guidance approach..."
-                className={`w-full p-3 rounded-xl border text-xs focus:outline-none focus:ring-2 ${
+                className={`w-full p-3 rounded-xl border text-xs focus:outline-none transition-all ${
                   wordCount > maxWords
-                    ? 'border-rose-400 focus:ring-rose-400 bg-rose-50/20'
-                    : 'border-gray-200 focus:ring-brand-wine'
+                    ? 'border-rose-400 focus:ring-2 focus:ring-rose-400 bg-rose-50/20'
+                    : 'border-[#E3E8F2] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 bg-white text-[#14213D]'
                 }`}
               />
               {wordCount > maxWords && (
@@ -610,8 +611,8 @@ export const Plans: React.FC = () => {
               )}
             </div>
 
-            <div className="p-3 rounded-xl bg-brand-cream/60 border border-brand-wine/10 text-[11px] text-brand-charcoal/70 flex items-start gap-2">
-              <input type="checkbox" required id="consentAdv" className="mt-0.5 rounded text-brand-wine focus:ring-brand-wine" />
+            <div className="p-3 rounded-xl bg-[#EEF5D8]/50 border border-[#B5D56A]/30 text-[11px] text-[#5B6784] flex items-start gap-2">
+              <input type="checkbox" required id="consentAdv" className="mt-0.5 rounded text-[#14213D] focus:ring-[#B5D56A]" />
               <label htmlFor="consentAdv">
                 I understand that Ji Le Zara provides social guidance and interpersonal coaching, not psychiatric diagnosis or emergency psychiatric intervention.
               </label>
@@ -620,9 +621,9 @@ export const Plans: React.FC = () => {
             <button
               type="submit"
               disabled={isSubmitting || wordCount > maxWords}
-              className="w-full py-3.5 rounded-full text-xs font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm"
+              className="w-full py-3.5 rounded-full text-xs font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] hover:-translate-y-0.5 transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-md"
             >
-              <Send className="w-4 h-4 text-brand-gold-light" />
+              <Send className="w-4 h-4 text-[#14213D]" />
               {isSubmitting ? 'Submitting to Advisory Intake...' : 'Submit Request for Advisory Team Review'}
             </button>
           </form>

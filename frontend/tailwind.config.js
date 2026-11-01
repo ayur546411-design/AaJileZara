@@ -7,35 +7,56 @@ export default {
   theme: {
     extend: {
       colors: {
+        navy: {
+          DEFAULT: '#14213D',
+          deep: '#0B132B',
+          light: '#2C4A8A',
+        },
+        dhani: {
+          DEFAULT: '#B5D56A',
+          soft: '#EEF5D8',
+          dark: '#6E8F1F',
+        },
+        'text-main': '#1B2440',
+        'text-muted': '#5B6784',
+        border: '#E3E8F2',
+        // Legacy brand mapping for backward compatibility
         brand: {
-          wine: '#790C35',
-          'wine-dark': '#4E0722',
-          'wine-light': '#9B1B4A',
-          cream: '#FFFAF1',
-          gold: '#B08032',
-          'gold-light': '#D4A359',
-          'gold-muted': '#C89D51',
-          blush: '#F9E9E7',
-          'blush-soft': '#FDF5F4',
-          charcoal: '#2D2327',
-          sand: '#F5ECE1',
-          muted: '#716569',
+          wine: '#14213D',
+          'wine-dark': '#0B132B',
+          'wine-light': '#2C4A8A',
+          cream: '#FFFFFF',
+          gold: '#6E8F1F',
+          'gold-light': '#B5D56A',
+          'gold-muted': '#6E8F1F',
+          blush: '#EEF5D8',
+          'blush-soft': '#EEF5D8',
+          charcoal: '#1B2440',
+          sand: '#EEF5D8',
+          muted: '#5B6784',
           dhani: {
-            DEFAULT: '#9FB640',
-            light: '#B6D14C',
-            dark: '#688622',
-            deep: '#526A18',
+            DEFAULT: '#B5D56A',
+            soft: '#EEF5D8',
+            dark: '#6E8F1F',
+            deep: '#6E8F1F',
           }
         }
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        heading: ['"Outfit"', '"Poppins"', 'sans-serif'],
+        serif: ['"Outfit"', '"Poppins"', 'sans-serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif'],
+      },
+      borderRadius: {
+        card: '16px',
+        xl: '14px',
+        '2xl': '16px',
+        '3xl': '20px',
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(121, 12, 53, 0.06), 0 2px 6px -1px rgba(0,0,0,0.04)',
-        'elevated': '0 12px 32px -4px rgba(121, 12, 53, 0.12), 0 4px 12px -2px rgba(0,0,0,0.05)',
-        'gold': '0 4px 20px -2px rgba(176, 128, 50, 0.25)',
+        'soft': '0 4px 20px -2px rgba(20, 33, 61, 0.06), 0 2px 6px -1px rgba(0,0,0,0.04)',
+        'elevated': '0 12px 32px -4px rgba(20, 33, 61, 0.12), 0 4px 12px -2px rgba(0,0,0,0.05)',
+        'dhani': '0 4px 20px -2px rgba(181, 213, 106, 0.35)',
       },
       keyframes: {
         fadeInUp: {

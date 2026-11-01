@@ -68,45 +68,45 @@ export const Login: React.FC = () => {
   };
 
   return (
-    <div className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div className="py-12 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto bg-white">
       {/* Brand Header */}
       <div className="text-center max-w-xl mx-auto space-y-3 mb-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-blush text-brand-wine text-xs font-semibold uppercase tracking-wider border border-brand-wine/15">
-          <Sparkles className="w-3.5 h-3.5 text-brand-gold" />
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#EEF5D8] text-[#14213D] text-xs font-semibold uppercase tracking-wider border border-[#B5D56A]/50">
+          <Sparkles className="w-3.5 h-3.5 text-[#6E8F1F]" />
           <span>Ji Le Zara Platform Access</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-brand-charcoal">
+        <h1 className="font-heading text-3xl sm:text-4xl font-bold text-[#14213D]">
           Sign In to Your Space
         </h1>
-        <p className="text-sm text-brand-charcoal/75 font-sans leading-relaxed">
+        <p className="text-sm text-[#5B6784] leading-relaxed">
           Access your private consultation sanctuary, session cards, and mentoring roadmap.
         </p>
       </div>
 
       {/* Already Logged In Notice */}
       {currentUser && (
-        <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-brand-blush/60 border border-brand-wine/20 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-[#EEF5D8] border border-[#B5D56A]/60 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-brand-wine text-white flex items-center justify-center font-bold font-serif">
+            <div className="w-10 h-10 rounded-full bg-[#14213D] text-[#B5D56A] flex items-center justify-center font-bold font-heading">
               {currentUser.name.charAt(0)}
             </div>
             <div>
-              <p className="text-xs text-brand-charcoal/70">Currently signed in as:</p>
-              <p className="text-sm font-bold text-brand-charcoal">{currentUser.name} ({currentUser.role})</p>
-              <p className="text-xs text-brand-charcoal/60">{currentUser.email}</p>
+              <p className="text-xs text-[#5B6784]">Currently signed in as:</p>
+              <p className="text-sm font-bold text-[#14213D]">{currentUser.name} ({currentUser.role})</p>
+              <p className="text-xs text-[#5B6784]">{currentUser.email}</p>
             </div>
           </div>
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <button
               onClick={() => redirectToPortal(role)}
-              className="flex-1 sm:flex-none px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-wine text-white hover:bg-brand-wine-dark transition-all flex items-center justify-center gap-1.5 shadow-soft"
+              className="btn-primary flex-1 sm:flex-none px-4 py-2 text-xs flex items-center justify-center gap-1.5"
             >
               <span>Go to My Space</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
             <button
               onClick={() => switchUser(null)}
-              className="px-3 py-2 rounded-full text-xs font-semibold text-brand-wine hover:bg-brand-blush border border-brand-wine/20 transition-all"
+              className="btn-secondary px-3 py-2 text-xs"
             >
               Log Out
             </button>
@@ -116,11 +116,11 @@ export const Login: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Column: Email & Password Login */}
-        <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-brand-wine/15 shadow-soft">
-          <h2 className="text-lg font-bold font-serif text-brand-charcoal mb-1">
+        <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-[#E3E8F2] shadow-soft">
+          <h2 className="text-lg font-bold font-heading text-[#14213D] mb-1">
             Account Login
           </h2>
-          <p className="text-xs text-brand-charcoal/70 mb-6">
+          <p className="text-xs text-[#5B6784] mb-6">
             Enter your email and password to access your bookings or dashboard.
           </p>
 
@@ -133,7 +133,7 @@ export const Login: React.FC = () => {
 
           <form onSubmit={handleManualLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-[#14213D] uppercase tracking-wider mb-1.5">
                 Email Address
               </label>
               <div className="relative">
@@ -143,13 +143,13 @@ export const Login: React.FC = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-brand-wine/20 text-sm focus:outline-none focus:border-brand-wine focus:ring-1 focus:ring-brand-wine/20 bg-brand-cream/30 text-brand-charcoal"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#E3E8F2] bg-white text-sm text-[#1B2440] focus:border-[#B5D56A] transition-all"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-brand-charcoal uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-bold text-[#14213D] uppercase tracking-wider mb-1.5">
                 Password
               </label>
               <div className="relative">
@@ -159,7 +159,7 @@ export const Login: React.FC = () => {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-brand-wine/20 text-sm focus:outline-none focus:border-brand-wine focus:ring-1 focus:ring-brand-wine/20 bg-brand-cream/30 text-brand-charcoal"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#E3E8F2] bg-white text-sm text-[#1B2440] focus:border-[#B5D56A] transition-all"
                 />
               </div>
             </div>
@@ -167,17 +167,17 @@ export const Login: React.FC = () => {
             <div className="pt-2">
               <button
                 type="submit"
-                className="w-full py-3 px-5 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-wine text-white hover:bg-brand-wine-dark transition-all flex items-center justify-center gap-2 shadow-soft hover:scale-[1.01] active:scale-[0.99]"
+                className="btn-primary w-full py-3 px-5 text-xs flex items-center justify-center gap-2"
               >
-                <LogIn className="w-4 h-4" />
+                <LogIn className="w-4 h-4 text-[#14213D]" />
                 <span>Sign In</span>
               </button>
             </div>
           </form>
 
-          <div className="mt-6 pt-5 border-t border-brand-wine/10 flex items-center justify-between text-xs text-brand-charcoal/70">
+          <div className="mt-6 pt-5 border-t border-[#E3E8F2] flex items-center justify-between text-xs text-[#5B6784]">
             <span>Don't have an account yet?</span>
-            <Link to="/book" className="text-brand-wine font-bold hover:underline">
+            <Link to="/book" className="text-[#14213D] font-bold hover:text-[#6E8F1F] underline decoration-[#B5D56A] decoration-2">
               Book a Free Call
             </Link>
           </div>
@@ -185,65 +185,65 @@ export const Login: React.FC = () => {
 
         {/* Right Column: Instant Role / Demo Access */}
         <div className="lg:col-span-5 space-y-4">
-          <div className="bg-brand-sand/50 p-6 rounded-3xl border border-brand-wine/15 shadow-xs space-y-4">
+          <div className="bg-[#EEF5D8]/40 p-6 rounded-3xl border border-[#E3E8F2] shadow-xs space-y-4">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-brand-gold">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#6E8F1F]">
                 Quick Access
               </span>
-              <h3 className="text-sm font-bold text-brand-charcoal mt-0.5">
+              <h3 className="text-sm font-bold text-[#14213D] mt-0.5">
                 One-Click Test Accounts
               </h3>
-              <p className="text-xs text-brand-charcoal/70 mt-1">
+              <p className="text-xs text-[#5B6784] mt-1">
                 Select any registered role to immediately explore its workspace:
               </p>
             </div>
 
             <div className="space-y-2">
               {demoAccounts.map((account) => {
-                let badgeClass = 'bg-brand-blush text-brand-wine';
-                let icon = <UserCircle className="w-4 h-4 text-brand-wine" />;
+                let badgeClass = 'bg-[#EEF5D8] text-[#14213D] border border-[#B5D56A]/50';
+                let icon = <UserCircle className="w-4 h-4 text-[#14213D]" />;
 
                 if (account.role === 'ADMIN') {
-                  badgeClass = 'bg-brand-charcoal text-brand-cream';
-                  icon = <ShieldCheck className="w-4 h-4 text-brand-gold-light" />;
+                  badgeClass = 'bg-[#14213D] text-[#B5D56A]';
+                  icon = <ShieldCheck className="w-4 h-4 text-[#B5D56A]" />;
                 } else if (account.role === 'ADVISOR') {
-                  badgeClass = 'bg-brand-wine text-white';
-                  icon = <HeartHandshake className="w-4 h-4 text-brand-gold-light" />;
+                  badgeClass = 'bg-[#2C4A8A] text-white';
+                  icon = <HeartHandshake className="w-4 h-4 text-[#B5D56A]" />;
                 }
 
                 return (
                   <button
                     key={account.id}
                     onClick={() => handleQuickLogin(account)}
-                    className="w-full text-left p-3 rounded-2xl bg-white hover:bg-brand-blush/50 border border-brand-wine/10 hover:border-brand-wine/30 transition-all flex items-center justify-between group shadow-2xs"
+                    className="w-full text-left p-3 rounded-2xl bg-white hover:bg-[#EEF5D8] border border-[#E3E8F2] hover:border-[#B5D56A] transition-all flex items-center justify-between group shadow-xs"
                   >
                     <div className="flex items-center gap-2.5">
-                      <div className="p-2 rounded-xl bg-brand-cream">
+                      <div className="p-2 rounded-xl bg-[#EEF5D8]">
                         {icon}
                       </div>
                       <div>
                         <div className="flex items-center gap-1.5">
-                          <p className="text-xs font-bold text-brand-charcoal group-hover:text-brand-wine transition-colors">
+                          <p className="text-xs font-bold text-[#14213D] group-hover:text-[#2C4A8A] transition-colors">
                             {account.name}
                           </p>
                           <span className={`text-[9px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wide ${badgeClass}`}>
                             {account.role}
                           </span>
                         </div>
-                        <p className="text-[11px] text-brand-charcoal/60 truncate max-w-[170px]">
+                        <p className="text-[11px] text-[#5B6784] truncate max-w-[170px]">
                           {account.advisorProfile?.title || account.clientCategory || account.email}
                         </p>
                       </div>
                     </div>
-                    <ArrowRight className="w-3.5 h-3.5 text-brand-wine/50 group-hover:text-brand-wine group-hover:translate-x-0.5 transition-all" />
+                    <ArrowRight className="w-3.5 h-3.5 text-[#5B6784] group-hover:text-[#14213D] group-hover:translate-x-0.5 transition-all" />
                   </button>
                 );
               })}
             </div>
 
-            <div className="p-3 rounded-xl bg-white/80 border border-brand-wine/10 text-[11px] text-brand-charcoal/70 space-y-1">
-              <div className="flex items-center gap-1.5 text-brand-wine font-semibold">
-                <CheckCircle className="w-3.5 h-3.5 text-brand-wine" />
+            <div className="p-3 rounded-2xl bg-white border border-[#E3E8F2] text-[11px] text-[#5B6784] space-y-1">
+              <div className="flex items-center gap-1.5 text-[#14213D] font-semibold">
+                <CheckCircle className="w-3.5 h-3.5 text-[#6E8F1F]" />
                 <span>Confidential & Safe</span>
               </div>
               <p>
@@ -256,4 +256,3 @@ export const Login: React.FC = () => {
     </div>
   );
 };
-

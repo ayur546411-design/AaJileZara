@@ -2,42 +2,119 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --navy: #14213D;
+  --navy-deep: #0B132B;
+  --navy-light: #2C4A8A;
+  --dhani: #B5D56A;
+  --dhani-soft: #EEF5D8;
+  --dhani-dark: #6E8F1F;
+  --white: #FFFFFF;
+  --text: #1B2440;
+  --text-muted: #5B6784;
+  --border: #E3E8F2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white: #0B132B;
+    --dhani-soft: #14213D;
+    --text: #F1F5F9;
+    --text-muted: #94A3B8;
+    --border: #1E293B;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'DM Sans', system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--text);
+    background-color: var(--white);
   }
 
-  h1, h2, h3, h4, h5, h6, .font-serif {
-    font-family: 'Playfair Display', Georgia, serif;
+  body {
+    background-color: var(--white);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading, .font-serif {
+    font-family: 'Outfit', 'Poppins', sans-serif;
+    color: var(--navy);
   }
 }
 
-/* Custom Editorial Glassmorphism & Micro-borders */
-.editorial-border {
-  border: 1px solid rgba(121, 12, 53, 0.12);
+/* Primary Button: Dhani background, Navy text, Bold, Hover lift */
+.btn-primary {
+  background-color: var(--dhani);
+  color: var(--navy);
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px -2px rgba(181, 213, 106, 0.4);
+}
+.btn-primary:hover {
+  background-color: #a8cc58;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -2px rgba(181, 213, 106, 0.55);
 }
 
-.editorial-card {
-  background-color: #FFFFFF;
-  border: 1px solid rgba(121, 12, 53, 0.08);
-  box-shadow: 0 4px 24px -2px rgba(121, 12, 53, 0.04), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+/* Secondary Button: Transparent, Navy border & text, Hover Navy bg & White text */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--navy);
+  border: 1.5px solid var(--navy);
+  font-weight: 600;
+  border-radius: 9999px;
+  transition: all 0.25s ease;
+}
+.btn-secondary:hover {
+  background-color: var(--navy);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px -2px rgba(20, 33, 61, 0.2);
 }
 
-.editorial-card:hover {
-  border-color: rgba(176, 128, 50, 0.4);
-  box-shadow: 0 12px 32px -4px rgba(121, 12, 53, 0.08), 0 4px 12px -2px rgba(176, 128, 50, 0.06);
-}
-
+/* Legacy Helper Classes mapped to new design system */
 .gold-badge {
-  background: linear-gradient(135deg, #FFF6E7 0%, #FFFAF1 100%);
-  border: 1px solid rgba(176, 128, 50, 0.3);
-  color: #8C6220;
+  background: var(--dhani-soft);
+  border: 1px solid rgba(110, 143, 31, 0.4);
+  color: var(--dhani-dark);
 }
 
 .wine-gradient {
-  background: linear-gradient(145deg, #790C35 0%, #520622 100%);
+  background: linear-gradient(145deg, var(--navy) 0%, var(--navy-deep) 100%);
+}
+
+.editorial-border {
+  border: 1px solid var(--border);
+}
+
+/* Card Styling: White background, 1px --border, 16px radius, dhani border on hover */
+.card-themed, .editorial-card {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -2px rgba(20, 33, 61, 0.05);
+  transition: all 0.25s ease;
+}
+.card-themed:hover, .editorial-card:hover {
+  border-color: var(--dhani);
+  box-shadow: 0 10px 30px -4px rgba(20, 33, 61, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Form Inputs Focus Ring */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--dhani) !important;
+  box-shadow: 0 0 0 3px rgba(181, 213, 106, 0.5) !important;
+}
+
+/* Smooth transitions globally on interactive elements */
+a, button {
+  transition: all 0.25s ease;
 }
 
 /* Custom scrollbars */
@@ -46,12 +123,12 @@
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFFAF1;
+  background: var(--dhani-soft);
 }
 ::-webkit-scrollbar-thumb {
-  background: #E8D8D3;
+  background: var(--navy-light);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #C4A4A0;
+  background: var(--navy);
 }

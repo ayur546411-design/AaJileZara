@@ -2,16 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { 
-  Users, 
-  Clock, 
-  MessageSquare, 
-  CheckCircle, 
-  Lock, 
-  Eye, 
   FileText, 
-  Send,
-  Calendar,
-  AlertCircle
+  Lock, 
+  Eye
 } from 'lucide-react';
 
 export const AdvisoryPortal: React.FC = () => {
@@ -48,11 +41,11 @@ export const AdvisoryPortal: React.FC = () => {
   if (role !== 'ADVISOR' && role !== 'ADMIN') {
     return (
       <div className="py-24 max-w-md mx-auto px-4 text-center space-y-4">
-        <div className="w-12 h-12 rounded-full bg-brand-wine/10 text-brand-wine flex items-center justify-center mx-auto font-bold">
+        <div className="w-12 h-12 rounded-full bg-[#EEF5D8] text-[#14213D] border border-[#B5D56A]/50 flex items-center justify-center mx-auto font-bold font-heading">
           !
         </div>
-        <h2 className="font-serif text-2xl font-bold text-brand-charcoal">Advisor Space Protected</h2>
-        <p className="text-xs text-brand-charcoal/70 leading-relaxed">
+        <h2 className="font-heading text-2xl font-bold text-[#14213D]">Advisor Space Protected</h2>
+        <p className="text-xs text-[#5B6784] leading-relaxed">
           This portal is reserved for authorized Advisory Team mentors. Please switch to an Advisor account (e.g. <em>Prof. Ananya Sengupta</em>) using the floating perspective pill at the bottom right.
         </p>
       </div>
@@ -93,37 +86,37 @@ export const AdvisoryPortal: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8 text-left">
       {/* Advisor Header */}
-      <div className="editorial-card rounded-3xl p-6 sm:p-8 bg-white border border-brand-wine/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div className="rounded-3xl p-6 sm:p-8 bg-white border border-[#E3E8F2] shadow-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <span className="text-[11px] uppercase tracking-wider text-brand-gold font-bold">
+          <span className="text-[11px] uppercase tracking-wider text-[#6E8F1F] font-bold">
             Advisory Team Portal · Internal Space
           </span>
-          <h1 className="font-serif text-3xl font-bold text-brand-wine">
+          <h1 className="font-heading text-3xl font-bold text-[#14213D]">
             Welcome, {currentUser?.name}
           </h1>
-          <p className="text-xs text-brand-charcoal/70">
-            Role: <strong>{role}</strong> · Review assigned client intakes, add confidential internal notes, and recommend roadmap steps.
+          <p className="text-xs text-[#5B6784]">
+            Role: <strong className="text-[#14213D]">{role}</strong> · Review assigned client intakes, add confidential internal notes, and recommend roadmap steps.
           </p>
         </div>
 
         {/* Tab switch */}
-        <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-brand-cream border border-brand-wine/15">
+        <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-[#EEF5D8]/50 border border-[#B5D56A]/40">
           <button
             onClick={() => setActiveTab('requests')}
-            className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
               activeTab === 'requests'
-                ? 'bg-brand-wine text-white shadow-sm'
-                : 'text-brand-charcoal hover:bg-white'
+                ? 'bg-[#14213D] text-[#B5D56A] shadow-xs'
+                : 'text-[#5B6784] hover:bg-white'
             }`}
           >
             Advisory Requests ({requests.length})
           </button>
           <button
             onClick={() => setActiveTab('bookings')}
-            className={`px-4 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 ${
               activeTab === 'bookings'
-                ? 'bg-brand-wine text-white shadow-sm'
-                : 'text-brand-charcoal hover:bg-white'
+                ? 'bg-[#14213D] text-[#B5D56A] shadow-xs'
+                : 'text-[#5B6784] hover:bg-white'
             }`}
           >
             Assigned Bookings ({bookings.length})
@@ -134,7 +127,7 @@ export const AdvisoryPortal: React.FC = () => {
       {/* Main Content View */}
       {activeTab === 'requests' ? (
         <div className="space-y-4">
-          <h2 className="font-serif text-xl font-bold text-brand-charcoal">
+          <h2 className="font-heading text-xl font-bold text-[#14213D]">
             Plan B Guidance Requests
           </h2>
 
@@ -142,30 +135,30 @@ export const AdvisoryPortal: React.FC = () => {
             {requests.map((req) => (
               <div
                 key={req.id}
-                className="editorial-card rounded-2xl p-6 bg-white border border-brand-wine/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+                className="rounded-2xl p-6 bg-white border border-[#E3E8F2] hover:border-[#B5D56A] shadow-soft hover:shadow-card transition-all duration-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
               >
                 <div className="space-y-1.5 max-w-xl">
                   <div className="flex items-center gap-2">
-                    <span className="font-mono text-xs font-bold text-brand-wine">
+                    <span className="font-mono text-xs font-bold text-[#14213D]">
                       {req.requestRef}
                     </span>
-                    <span className="text-xs text-gray-400">•</span>
-                    <span className="font-semibold text-xs text-brand-charcoal">
+                    <span className="text-xs text-[#5B6784]">•</span>
+                    <span className="font-semibold text-xs text-[#14213D]">
                       {req.client?.name}
                     </span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-brand-blush text-brand-wine font-medium">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#EEF5D8] text-[#14213D] font-medium border border-[#B5D56A]/30">
                       {req.client?.clientCategory}
                     </span>
                   </div>
 
-                  <p className="text-xs text-brand-charcoal/80 line-clamp-2">
+                  <p className="text-xs text-[#5B6784] line-clamp-2">
                     "{req.concernSummary}"
                   </p>
 
-                  <div className="flex items-center gap-4 text-[11px] text-gray-500 pt-1">
-                    <span>Lang: <strong>{req.preferredLanguage}</strong></span>
-                    <span>Contact: <strong>{req.preferredContact}</strong></span>
-                    <span>Area: <strong>{req.category?.name || 'General'}</strong></span>
+                  <div className="flex items-center gap-4 text-[11px] text-[#5B6784] pt-1">
+                    <span>Lang: <strong className="text-[#14213D]">{req.preferredLanguage}</strong></span>
+                    <span>Contact: <strong className="text-[#14213D]">{req.preferredContact}</strong></span>
+                    <span>Area: <strong className="text-[#14213D]">{req.category?.name || 'General'}</strong></span>
                   </div>
                 </div>
 
@@ -174,7 +167,7 @@ export const AdvisoryPortal: React.FC = () => {
                     req.status === 'NEW'
                       ? 'bg-amber-100 text-amber-800'
                       : req.status === 'REVIEWED'
-                      ? 'bg-blue-100 text-blue-800'
+                      ? 'bg-[#EEF5D8] text-[#14213D] border border-[#B5D56A]/50'
                       : 'bg-emerald-100 text-emerald-800'
                   }`}>
                     {req.status}
@@ -182,7 +175,7 @@ export const AdvisoryPortal: React.FC = () => {
 
                   <button
                     onClick={() => handleOpenReview(req)}
-                    className="px-4 py-2 rounded-full text-xs font-semibold bg-brand-charcoal text-white hover:bg-brand-wine transition-colors flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-full text-xs font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] hover:-translate-y-0.5 transition-all shadow-sm flex items-center gap-1.5"
                   >
                     <FileText className="w-3.5 h-3.5" />
                     <span>Review & Advise</span>
@@ -195,7 +188,7 @@ export const AdvisoryPortal: React.FC = () => {
       ) : (
         /* Bookings View */
         <div className="space-y-4">
-          <h2 className="font-serif text-xl font-bold text-brand-charcoal">
+          <h2 className="font-heading text-xl font-bold text-[#14213D]">
             Upcoming & Assigned Consultations
           </h2>
 
@@ -203,37 +196,37 @@ export const AdvisoryPortal: React.FC = () => {
             {bookings.map((b) => (
               <div
                 key={b.id}
-                className="editorial-card rounded-2xl p-5 bg-white space-y-3"
+                className="rounded-2xl p-5 bg-white border border-[#E3E8F2] hover:border-[#B5D56A] shadow-soft space-y-3"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs font-bold text-brand-wine">
+                  <span className="font-mono text-xs font-bold text-[#14213D]">
                     {b.bookingRef}
                   </span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#EEF5D8] text-[#6E8F1F] border border-[#B5D56A]/50">
                     {b.status}
                   </span>
                 </div>
 
-                <h3 className="font-serif text-base font-bold text-brand-charcoal">
+                <h3 className="font-heading text-base font-bold text-[#14213D]">
                   {b.client?.name}
                 </h3>
-                <p className="text-xs text-brand-charcoal/70">
+                <p className="text-xs text-[#5B6784]">
                   {b.category?.name} · {b.sessionType === 'LIVE_VIDEO' ? 'Live Video' : 'Telephone'}
                 </p>
 
-                <div className="p-3 rounded-xl bg-brand-cream/50 text-[11px] text-brand-charcoal/75 space-y-1">
+                <div className="p-3 rounded-xl bg-[#EEF5D8]/40 border border-[#B5D56A]/30 text-[11px] text-[#5B6784] space-y-1">
                   <p>
-                    <strong>Scheduled:</strong> {new Date(b.scheduledAt).toLocaleString('en-IN')}
+                    <strong className="text-[#14213D]">Scheduled:</strong> {new Date(b.scheduledAt).toLocaleString('en-IN')}
                   </p>
                   <p>
-                    <strong>Phone:</strong> {b.client?.phone || 'Not supplied'}
+                    <strong className="text-[#14213D]">Phone:</strong> {b.client?.phone || 'Not supplied'}
                   </p>
                 </div>
 
                 <div className="pt-2 flex justify-end">
                   <a
                     href={`/session/${b.sessionUid}`}
-                    className="px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-colors"
+                    className="px-4 py-1.5 rounded-full text-xs font-bold bg-[#14213D] text-white hover:bg-[#2C4A8A] transition-colors shadow-xs"
                   >
                     Open Session Bridge
                   </a>
@@ -246,51 +239,51 @@ export const AdvisoryPortal: React.FC = () => {
 
       {/* Review Modal */}
       {selectedRequest && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between pb-3 border-b border-gray-100">
+        <div className="fixed inset-0 z-50 bg-[#0B132B]/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto animate-in zoom-in-95 duration-200 border border-[#E3E8F2] shadow-2xl">
+            <div className="flex items-center justify-between pb-3 border-b border-[#E3E8F2]">
               <div>
-                <span className="text-[10px] font-mono font-bold text-brand-gold uppercase">
+                <span className="text-[10px] font-mono font-bold text-[#6E8F1F] uppercase">
                   {selectedRequest.requestRef}
                 </span>
-                <h3 className="font-serif text-xl font-bold text-brand-charcoal">
+                <h3 className="font-heading text-xl font-bold text-[#14213D]">
                   Review Client Intake & Craft Guidance
                 </h3>
               </div>
               <button
                 onClick={() => setSelectedRequest(null)}
-                className="text-gray-400 hover:text-gray-600 p-1 text-sm font-bold"
+                className="text-[#5B6784] hover:text-[#14213D] p-1 text-sm font-bold"
               >
                 ✕
               </button>
             </div>
 
             {saveSuccess && (
-              <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800">
+              <div className="p-3 rounded-xl bg-[#EEF5D8] border border-[#B5D56A] text-xs text-[#14213D] font-semibold">
                 ✓ Guidance notes and status updated successfully.
               </div>
             )}
 
             {/* Client Context Box */}
-            <div className="p-4 rounded-xl bg-brand-blush/30 border border-brand-wine/10 text-xs space-y-2">
-              <div className="flex justify-between font-semibold text-brand-wine">
+            <div className="p-4 rounded-xl bg-[#EEF5D8]/40 border border-[#B5D56A]/30 text-xs space-y-2">
+              <div className="flex justify-between font-semibold text-[#14213D]">
                 <span>Client: {selectedRequest.client?.name}</span>
                 <span>Category: {selectedRequest.client?.clientCategory}</span>
               </div>
-              <p className="text-brand-charcoal/80 leading-relaxed italic">
+              <p className="text-[#5B6784] leading-relaxed italic">
                 "{selectedRequest.concernSummary}"
               </p>
             </div>
 
             {/* Status Selector */}
             <div>
-              <label className="block text-xs font-semibold text-brand-charcoal mb-1">
+              <label className="block text-xs font-semibold text-[#14213D] mb-1">
                 Update Case Status
               </label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-brand-wine focus:outline-none bg-white"
+                className="w-full px-3 py-2 rounded-xl border border-[#E3E8F2] text-xs text-[#14213D] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 focus:outline-none bg-white transition-all"
               >
                 <option value="NEW">NEW - Unreviewed</option>
                 <option value="REVIEWED">REVIEWED - Intake Assessed</option>
@@ -303,8 +296,8 @@ export const AdvisoryPortal: React.FC = () => {
             {/* Internal Confidential Notes (Advisor/Admin ONLY) */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold text-brand-wine flex items-center gap-1.5">
-                  <Lock className="w-3.5 h-3.5 text-brand-wine" />
+                <label className="text-xs font-semibold text-[#14213D] flex items-center gap-1.5">
+                  <Lock className="w-3.5 h-3.5 text-[#14213D]" />
                   <span>Confidential Internal Notes (Team Only - Hidden from Client)</span>
                 </label>
               </div>
@@ -313,15 +306,15 @@ export const AdvisoryPortal: React.FC = () => {
                 value={internalNotes}
                 onChange={(e) => setInternalNotes(e.target.value)}
                 placeholder="Record clinical-social observations, sensitive family dynamics, or reassignment recommendations..."
-                className="w-full p-3 rounded-xl border border-gray-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-wine"
+                className="w-full p-3 rounded-xl border border-[#E3E8F2] text-xs text-[#14213D] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 focus:outline-none bg-white transition-all"
               />
             </div>
 
             {/* Client Visible Recommendations */}
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold text-brand-charcoal flex items-center gap-1.5">
-                  <Eye className="w-3.5 h-3.5 text-brand-gold" />
+                <label className="text-xs font-semibold text-[#14213D] flex items-center gap-1.5">
+                  <Eye className="w-3.5 h-3.5 text-[#6E8F1F]" />
                   <span>Client-Visible Guidance Recommendations (Shown in Client Portal)</span>
                 </label>
               </div>
@@ -330,7 +323,7 @@ export const AdvisoryPortal: React.FC = () => {
                 value={clientRecommendations}
                 onChange={(e) => setClientRecommendations(e.target.value)}
                 placeholder="Write caring, actionable suggestions or recommended next packages for the client..."
-                className="w-full p-3 rounded-xl border border-gray-200 text-xs focus:outline-none focus:ring-2 focus:ring-brand-wine"
+                className="w-full p-3 rounded-xl border border-[#E3E8F2] text-xs text-[#14213D] focus:border-[#B5D56A] focus:ring-2 focus:ring-[#B5D56A]/50 focus:outline-none bg-white transition-all"
               />
             </div>
 
@@ -338,7 +331,7 @@ export const AdvisoryPortal: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSelectedRequest(null)}
-                className="px-4 py-2 rounded-full text-xs text-gray-500 hover:text-gray-700"
+                className="px-4 py-2 rounded-full text-xs text-[#5B6784] hover:text-[#14213D]"
               >
                 Cancel
               </button>
@@ -346,7 +339,7 @@ export const AdvisoryPortal: React.FC = () => {
               <button
                 type="button"
                 onClick={handleSaveReview}
-                className="px-6 py-2.5 rounded-full text-xs font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-colors"
+                className="px-6 py-2.5 rounded-full text-xs font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a5c758] transition-all shadow-sm"
               >
                 Save Guidance Review
               </button>

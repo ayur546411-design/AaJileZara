@@ -125,31 +125,31 @@ export const FAQ: React.FC = () => {
   };
 
   return (
-    <div className="space-y-16 pb-20">
-      {/* Header Banner */}
-      <section className="bg-brand-blush/30 py-16 border-b border-brand-wine/10 text-center">
+    <div className="space-y-16 pb-20 bg-white">
+      {/* Header Banner (Dhani-Soft Alternate Section) */}
+      <section className="bg-[#EEF5D8]/40 py-16 border-b border-[#E3E8F2] text-center">
         <div className="max-w-4xl mx-auto px-4 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full gold-badge text-xs uppercase tracking-wider font-semibold">
-            <HelpCircle className="w-3.5 h-3.5 text-brand-gold" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#EEF5D8] border border-[#B5D56A]/50 text-[#14213D] text-xs uppercase tracking-wider font-semibold">
+            <HelpCircle className="w-3.5 h-3.5 text-[#6E8F1F]" />
             <span>Client Help Desk & Knowledge Base</span>
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl text-brand-wine font-bold leading-tight">
+          <h1 className="font-heading text-4xl sm:text-5xl text-[#14213D] font-bold leading-tight">
             Frequently Asked Questions
           </h1>
-          <p className="text-base sm:text-lg text-brand-charcoal/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#5B6784] max-w-2xl mx-auto leading-relaxed">
             Everything you need to know about Dr. Nilambari Dave’s coaching philosophy, packages, confidentiality safeguards, and appointment logistics.
           </p>
 
           {/* Search Bar */}
           <div className="pt-4 max-w-xl mx-auto">
             <div className="relative">
-              <Search className="w-4 h-4 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#5B6784] absolute left-4 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search questions (e.g., student subsidy, recording, therapy)..."
-                className="w-full pl-11 pr-4 py-3 rounded-full border border-brand-wine/20 bg-white text-xs sm:text-sm focus:ring-2 focus:ring-brand-wine focus:outline-none shadow-sm"
+                className="w-full pl-11 pr-4 py-3 rounded-full border border-[#E3E8F2] bg-white text-xs sm:text-sm text-[#1B2440] focus:border-[#B5D56A] shadow-xs transition-all"
               />
             </div>
           </div>
@@ -167,8 +167,8 @@ export const FAQ: React.FC = () => {
               onClick={() => setSelectedCategory(cat.id)}
               className={`px-4 py-2 rounded-full text-xs font-semibold transition-all ${
                 selectedCategory === cat.id
-                  ? 'bg-brand-wine text-white shadow-sm'
-                  : 'bg-white text-brand-charcoal/80 border border-brand-wine/15 hover:bg-brand-blush/40'
+                  ? 'bg-[#B5D56A] text-[#14213D] font-bold shadow-xs'
+                  : 'bg-white text-[#1B2440] border border-[#E3E8F2] hover:bg-[#EEF5D8]'
               }`}
             >
               {cat.label}
@@ -178,11 +178,11 @@ export const FAQ: React.FC = () => {
 
         {/* FAQs Accordion */}
         {filteredFaqs.length === 0 ? (
-          <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-gray-300 p-8">
-            <p className="text-sm text-gray-500">No matching questions found for "{searchTerm}".</p>
+          <div className="text-center py-12 bg-white rounded-2xl border border-dashed border-[#E3E8F2] p-8">
+            <p className="text-sm text-[#5B6784]">No matching questions found for "{searchTerm}".</p>
             <button
               onClick={() => { setSearchTerm(''); setSelectedCategory('all'); }}
-              className="mt-3 text-xs font-bold text-brand-wine hover:underline"
+              className="mt-3 text-xs font-bold text-[#14213D] hover:text-[#6E8F1F] underline decoration-[#B5D56A]"
             >
               Clear filters and view all questions
             </button>
@@ -192,21 +192,21 @@ export const FAQ: React.FC = () => {
             {filteredFaqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="border border-[#e8d6c5] rounded-2xl bg-white overflow-hidden transition-all shadow-sm"
+                className="border border-[#E3E8F2] rounded-2xl bg-white overflow-hidden transition-all shadow-xs hover:border-[#B5D56A]"
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-5 text-left text-sm sm:text-base font-bold text-brand-charcoal flex items-center justify-between hover:bg-brand-cream/30 gap-4"
+                  className="w-full p-5 text-left text-sm sm:text-base font-bold text-[#14213D] flex items-center justify-between hover:bg-[#EEF5D8]/40 gap-4"
                 >
-                  <span className="font-serif">{faq.q}</span>
+                  <span className="font-heading">{faq.q}</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-brand-wine shrink-0 transition-transform duration-200 ${
-                      openIndex === idx ? 'rotate-180' : ''
+                    className={`w-4 h-4 text-[#14213D] shrink-0 transition-transform duration-200 ${
+                      openIndex === idx ? 'rotate-180 text-[#6E8F1F]' : ''
                     }`}
                   />
                 </button>
                 {openIndex === idx && (
-                  <div className="px-5 pb-6 pt-1 text-xs sm:text-sm text-[#544a46] leading-relaxed border-t border-[#e8d6c5]/50 transition-all duration-200 ease-out">
+                  <div className="px-5 pb-6 pt-1 text-xs sm:text-sm text-[#5B6784] leading-relaxed border-t border-[#E3E8F2] transition-all duration-200 ease-out">
                     {faq.a}
                   </div>
                 )}
@@ -216,16 +216,16 @@ export const FAQ: React.FC = () => {
         )}
 
         {/* Official Client Forms Box */}
-        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-brand-blush/40 border border-brand-wine/20 text-left flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div className="mt-14 p-6 sm:p-8 rounded-3xl bg-[#EEF5D8] border border-[#B5D56A]/60 text-left flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-brand-wine text-xs font-bold uppercase tracking-wider">
-              <FileText className="w-4 h-4 text-brand-gold" />
+            <div className="flex items-center gap-2 text-[#14213D] text-xs font-bold uppercase tracking-wider">
+              <FileText className="w-4 h-4 text-[#6E8F1F]" />
               <span>Official Legal Compliance</span>
             </div>
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-brand-charcoal">
+            <h3 className="font-heading text-xl sm:text-2xl font-bold text-[#14213D]">
               Client Intake & Recording Consent Documents
             </h3>
-            <p className="text-xs sm:text-sm text-brand-charcoal/80 max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#5B6784] max-w-xl leading-relaxed">
               Review our complete Client Intake & Coaching Agreement, non-medical disclosure, and 90-day recording retention policies in accordance with Indian regulations.
             </p>
           </div>
@@ -233,7 +233,7 @@ export const FAQ: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <Link
               to="/client-forms"
-              className="px-5 py-2.5 rounded-full text-xs font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-all shadow-sm text-center"
+              className="btn-primary px-5 py-2.5 text-xs text-center"
             >
               View Client Forms Online
             </Link>
@@ -241,7 +241,7 @@ export const FAQ: React.FC = () => {
               href="/Ji_Le_Zara_Client_Forms.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-full text-xs font-semibold bg-white text-brand-charcoal hover:bg-brand-cream border border-brand-wine/20 transition-all text-center"
+              className="btn-secondary px-5 py-2.5 text-xs text-center"
             >
               Download PDF Form
             </a>
@@ -249,24 +249,24 @@ export const FAQ: React.FC = () => {
         </div>
 
         {/* Still Have Questions CTA */}
-        <div className="mt-12 text-center p-8 rounded-3xl bg-white border border-brand-wine/10 space-y-4">
-          <h3 className="font-serif text-2xl font-bold text-brand-wine">
+        <div className="mt-12 text-center p-8 rounded-3xl bg-white border border-[#E3E8F2] space-y-4 shadow-soft">
+          <h3 className="font-heading text-2xl font-bold text-[#14213D]">
             Have a Specific Question About Your Circumstances?
           </h3>
-          <p className="text-xs sm:text-sm text-brand-charcoal/70 max-w-xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#5B6784] max-w-xl mx-auto leading-relaxed">
             Book a complimentary 20-minute Discovery Call with Dr. Nilambari Dave or send our advisory intake desk a confidential note.
           </p>
           <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
             <Link
               to="/book"
-              className="px-6 py-3 rounded-full text-xs font-semibold bg-brand-wine text-white hover:bg-brand-wine-dark transition-all shadow-soft inline-flex items-center gap-2"
+              className="btn-primary px-6 py-3 text-xs inline-flex items-center gap-2"
             >
               <span>Book a Free Discovery Call</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#14213D]" />
             </Link>
             <Link
               to="/contact"
-              className="px-6 py-3 rounded-full text-xs font-semibold bg-brand-blush/60 text-brand-wine hover:bg-brand-wine hover:text-white transition-all"
+              className="btn-secondary px-6 py-3 text-xs"
             >
               Contact Our Desk
             </Link>

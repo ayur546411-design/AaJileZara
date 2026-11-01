@@ -80,17 +80,27 @@ export const HeroSlider: React.FC = () => {
 
   return (
     <section
-      className="relative w-full overflow-hidden bg-gradient-to-br from-[#fffdf7] via-[#fdf7ee] to-[#f8ebdf]"
+      className="relative w-full overflow-hidden bg-gradient-to-br from-[#14213D] via-[#1A2C52] to-[#2C4A8A]"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
+      {/* ── Soft Dhani Glow / Blob behind heading ─────────────────────────── */}
+      <div 
+        className="absolute top-1/4 left-10 w-96 h-96 rounded-full bg-[#B5D56A]/15 blur-3xl pointer-events-none z-10"
+        aria-hidden="true"
+      />
+      <div 
+        className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-[#2C4A8A]/40 blur-3xl pointer-events-none z-10"
+        aria-hidden="true"
+      />
+
       {/* ── main slider container ─────────────────────────── */}
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="relative rounded-2xl overflow-hidden my-6 sm:my-8 lg:my-10 shadow-elevated border border-[#ecdcd0]/60">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-20">
+        <div className="relative rounded-3xl overflow-hidden my-6 sm:my-8 lg:my-10 shadow-elevated border border-white/10">
           
           {/* background gradient overlay layer */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#fffaf1]/95 via-[#fffaf1]/80 to-transparent z-10 pointer-events-none lg:w-[55%]" />
-          <div className="absolute inset-0 bg-gradient-to-l from-[#fffaf1]/30 to-transparent z-10 pointer-events-none hidden lg:block" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#14213D]/95 via-[#14213D]/85 to-transparent z-10 pointer-events-none lg:w-[60%]" />
+          <div className="absolute inset-0 bg-gradient-to-l from-[#14213D]/40 to-transparent z-10 pointer-events-none hidden lg:block" />
 
           {/* ── slide image (full background) ─────────────── */}
           <div className="relative h-[520px] sm:h-[560px] lg:h-[520px]">
@@ -112,11 +122,11 @@ export const HeroSlider: React.FC = () => {
 
           {/* ── text overlay (left side) ──────────────────── */}
           <div className="absolute inset-0 z-20 flex items-center">
-            <div className="w-full lg:w-[55%] px-6 sm:px-10 lg:px-14 py-10">
+            <div className="w-full lg:w-[58%] px-6 sm:px-10 lg:px-14 py-10">
               {/* tagline */}
               <div
                 key={`tag-${current}`}
-                className="inline-block text-[11px] uppercase tracking-[2.5px] font-bold text-brand-wine mb-4 animate-fadeInUp"
+                className="inline-block text-[11px] uppercase tracking-[2.5px] font-bold text-[#B5D56A] mb-4 animate-fadeInUp"
               >
                 {slide.tagline}
               </div>
@@ -124,17 +134,17 @@ export const HeroSlider: React.FC = () => {
               {/* heading */}
               <h1
                 key={`h-${current}`}
-                className="font-serif text-3xl sm:text-4xl lg:text-[2.8rem] text-brand-charcoal font-bold leading-[1.15] mb-6 animate-fadeInUp"
+                className="font-heading text-3xl sm:text-4xl lg:text-[2.8rem] text-white font-bold leading-[1.15] mb-6 animate-fadeInUp"
                 style={{ animationDelay: '100ms' }}
               >
                 {slide.heading}
                 <br />
-                <span className="text-brand-wine italic font-normal">
+                <span className="text-[#B5D56A] italic font-normal">
                   {slide.headingAccent}
                 </span>
               </h1>
 
-              {/* bullet points (Skytercel checkmark style) */}
+              {/* bullet points */}
               <ul
                 key={`ul-${current}`}
                 className="space-y-2.5 mb-7 animate-fadeInUp"
@@ -144,17 +154,17 @@ export const HeroSlider: React.FC = () => {
                   <li key={i} className="flex items-start gap-2.5">
                     <CheckCircle2
                       size={18}
-                      className="text-brand-wine mt-0.5 shrink-0"
+                      className="text-[#B5D56A] mt-0.5 shrink-0"
                       strokeWidth={2.5}
                     />
-                    <span className="text-sm sm:text-[15px] font-semibold text-brand-charcoal leading-snug">
+                    <span className="text-sm sm:text-[15px] font-medium text-white/95 leading-snug">
                       {b}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              {/* CTA */}
+              {/* CTA Button: Dhani bg, Navy text, Bold, Hover lift */}
               <div
                 key={`cta-${current}`}
                 className="animate-fadeInUp"
@@ -162,9 +172,9 @@ export const HeroSlider: React.FC = () => {
               >
                 <Link
                   to={slide.cta.to}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold bg-brand-wine text-white hover:bg-brand-wine-dark shadow-soft hover:shadow-elevated transition-all"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-sm font-bold bg-[#B5D56A] text-[#14213D] hover:bg-[#a8cc58] hover:-translate-y-0.5 hover:shadow-dhani active:translate-y-0 transition-all shadow-md"
                 >
-                  {slide.cta.label}
+                  <span>{slide.cta.label}</span>
                   <ArrowRight size={16} />
                 </Link>
               </div>
@@ -175,31 +185,29 @@ export const HeroSlider: React.FC = () => {
           <button
             onClick={() => goTo(current - 1)}
             aria-label="Previous slide"
-            className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-[#ecdcd0] flex items-center justify-center text-brand-charcoal hover:bg-brand-wine hover:text-white hover:border-brand-wine transition-all shadow-sm"
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-[#14213D]/80 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#B5D56A] hover:text-[#14213D] hover:border-[#B5D56A] transition-all shadow-sm"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={() => goTo(current + 1)}
             aria-label="Next slide"
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-[#ecdcd0] flex items-center justify-center text-brand-charcoal hover:bg-brand-wine hover:text-white hover:border-brand-wine transition-all shadow-sm"
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-[#14213D]/80 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-[#B5D56A] hover:text-[#14213D] hover:border-[#B5D56A] transition-all shadow-sm"
           >
             <ChevronRight size={20} />
           </button>
         </div>
       </div>
 
-      {/* ── dot navigation ──────────────────────────────── */}
-      <div className="flex justify-center gap-2.5 pb-6">
-        {slides.map((_, idx) => (
+      {/* ── bottom indicator dots ─────────────────────────── */}
+      <div className="flex justify-center gap-2 pb-6 relative z-20">
+        {slides.map((_, i) => (
           <button
-            key={idx}
-            onClick={() => goTo(idx)}
-            aria-label={`Go to slide ${idx + 1}`}
-            className={`rounded-full transition-all duration-300 ${
-              idx === current
-                ? 'w-8 h-3 bg-brand-wine'
-                : 'w-3 h-3 bg-[#d4bfb0] hover:bg-brand-gold'
+            key={i}
+            onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              i === current ? 'w-8 bg-[#B5D56A]' : 'w-2 bg-white/40 hover:bg-white/60'
             }`}
           />
         ))}
