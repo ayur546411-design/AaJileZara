@@ -19,7 +19,13 @@ export default {
           'blush-soft': '#FDF5F4',
           charcoal: '#2D2327',
           sand: '#F5ECE1',
-          muted: '#716569'
+          muted: '#716569',
+          dhani: {
+            DEFAULT: '#9FB640',
+            light: '#B6D14C',
+            dark: '#688622',
+            deep: '#526A18',
+          }
         }
       },
       fontFamily: {

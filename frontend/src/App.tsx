@@ -4,6 +4,7 @@ import { AuthProvider } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { RoleSwitcher } from './components/RoleSwitcher';
+import { ScrollToTop } from './components/ScrollToTop';
 
 // Pages
 import { Home } from './pages/Home';
@@ -19,6 +20,7 @@ import { AdvisoryPortal } from './pages/AdvisoryPortal';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { Contact } from './pages/Contact';
 import { FAQ } from './pages/FAQ';
+import { Login } from './pages/Login';
 import { ClientForms } from './pages/ClientForms';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import { TermsConditions } from './pages/TermsConditions';
@@ -29,6 +31,7 @@ export const App: React.FC = () => {
   return (
     <AuthProvider>
       <Router>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen bg-brand-cream text-brand-charcoal selection:bg-brand-blush selection:text-brand-wine">
           <Navbar />
           
@@ -42,6 +45,7 @@ export const App: React.FC = () => {
               <Route path="/advisors" element={<Advisors />} />
               <Route path="/how-it-works" element={<HowItWorks />} />
               <Route path="/book" element={<BookSession />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/session/:sessionUid" element={<SessionRoom />} />
               <Route path="/portal" element={<ClientPortal />} />
               <Route path="/advisory-portal" element={<AdvisoryPortal />} />

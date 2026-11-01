@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import * as core from 'express-serve-static-core';
 import prisma from '../lib/prisma.js';
 
 export interface AuthenticatedUser {
@@ -11,7 +12,13 @@ export interface AuthenticatedUser {
   isVerifiedStudent: boolean;
 }
 
-export interface AuthenticatedRequest extends Request {
+export interface AuthenticatedRequest<
+  P = Record<string, string>,
+  ResBody = any,
+  ReqBody = any,
+  ReqQuery = core.Query,
+  Locals extends Record<string, any> = Record<string, any>
+> extends Request<P, ResBody, ReqBody, ReqQuery, Locals> {
   user?: AuthenticatedUser;
 }
 
